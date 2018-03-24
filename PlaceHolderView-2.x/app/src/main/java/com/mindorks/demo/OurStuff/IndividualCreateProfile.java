@@ -39,7 +39,8 @@ public class IndividualCreateProfile extends AppCompatActivity implements View.O
     @Override
     public void onClick(View view) {
         EditText name = findViewById(R.id.name);
-        EditText email = findViewById(R.id.email);
+        EditText email = findViewById(R.id.email2);
+        EditText password = findViewById(R.id.password2);
         EditText address = findViewById(R.id.address);
         RadioGroup housing = findViewById(R.id.housing);
         RadioGroup kid_group = findViewById(R.id.kid_group);
@@ -56,6 +57,9 @@ public class IndividualCreateProfile extends AppCompatActivity implements View.O
         }
         else if (address.getText().equals(null) || address.getText().length() < 1) {
             Toast.makeText(IndividualCreateProfile.this, "Please Enter Your Address", Toast.LENGTH_SHORT).show();
+            enabled = false;
+        } else if (password.getText().equals(null) || password.getText().length() < 1) {
+            Toast.makeText(IndividualCreateProfile.this, "Please Enter a Password", Toast.LENGTH_SHORT).show();
             enabled = false;
         }
 
@@ -108,7 +112,7 @@ public class IndividualCreateProfile extends AppCompatActivity implements View.O
 
             Individual individual = new Individual(name.getText().toString(), email.getText().toString(),
                                                     address.getText().toString(), type, Integer.parseInt(kidButton.getText().toString()),
-                                                    Integer.parseInt(petButton.getText().toString()));
+                                                    Integer.parseInt(petButton.getText().toString()), password.getText().toString());
 
             database.child("individuals").child("user-" + individual.hashCode()).setValue(individual);
 
