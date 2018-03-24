@@ -7,13 +7,18 @@ package com.mindorks.demo.OurStuff.Models;
 public class Shelter {
     private String name;
     private String email;
+    private String password;
     private String phone;
     private String address;
     private OrganizationType organization;
 
-    public Shelter(String name, String email, String phone, String address, OrganizationType organization) {
+    public Shelter() {
+    }
+
+    public Shelter(String name, String email, String password, String phone, String address, OrganizationType organization) {
         this.name = name;
         this.email = email;
+        this.password = password;
         this.phone = phone;
         this.address = address;
         this.organization = organization;
@@ -59,24 +64,36 @@ public class Shelter {
         this.organization = organization;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Shelter that = (Shelter) o;
+        Shelter shelter = (Shelter) o;
 
-        if (name != null ? !name.equals(that.name) : that.name != null) return false;
-        if (email != null ? !email.equals(that.email) : that.email != null) return false;
-        if (phone != null ? !phone.equals(that.phone) : that.phone != null) return false;
-        if (address != null ? !address.equals(that.address) : that.address != null) return false;
-        return organization == that.organization;
+        if (name != null ? !name.equals(shelter.name) : shelter.name != null) return false;
+        if (email != null ? !email.equals(shelter.email) : shelter.email != null) return false;
+        if (password != null ? !password.equals(shelter.password) : shelter.password != null)
+            return false;
+        if (phone != null ? !phone.equals(shelter.phone) : shelter.phone != null) return false;
+        if (address != null ? !address.equals(shelter.address) : shelter.address != null)
+            return false;
+        return organization == shelter.organization;
     }
 
     @Override
     public int hashCode() {
         int result = name != null ? name.hashCode() : 0;
         result = 31 * result + (email != null ? email.hashCode() : 0);
+        result = 31 * result + (password != null ? password.hashCode() : 0);
         result = 31 * result + (phone != null ? phone.hashCode() : 0);
         result = 31 * result + (address != null ? address.hashCode() : 0);
         result = 31 * result + (organization != null ? organization.hashCode() : 0);
