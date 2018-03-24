@@ -25,5 +25,5 @@
         <activity android:name=".OurStuff.ManageShelter" />
         <activity android:name=".OurStuff.ManageDogProfile"></activity>
     </application>
-
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 </manifest>
