@@ -17,6 +17,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.mindorks.demo.ActivityTinder;
 import com.mindorks.demo.OurStuff.Models.Individual;
+import com.mindorks.demo.OurStuff.Models.Shelter;
 import com.mindorks.demo.R;
 
 import java.util.ArrayList;
@@ -30,6 +31,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     DatabaseReference database = FirebaseDatabase.getInstance().getReference();
     DatabaseReference individualsRef = database.child("individuals");
+    DatabaseReference sheltersRef = database.child("shelters");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,26 +50,43 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         final String email = emailText.getText().toString();
         final String password = passwordText.getText().toString();
 
-        individualsRef.addListenerForSingleValueEvent(new ValueEventListener() {
+        database.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 boolean foundUser = false;
 
                 if (!email.equals("") && !password.equals("")) {
                     Iterable<DataSnapshot> snapshots = dataSnapshot.getChildren();
-                    for (DataSnapshot snap : snapshots) {
-                        Individual individual = snap.getValue(Individual.class);
-                        String dbEmail = individual.getEmail();
-                        String dbPassword = individual.getPassword();
 
-                        if (dbEmail.equals(email) && dbPassword.equals(password)) {
-                            foundUser = true;
-                            break;
+                    for (DataSnapshot snap : snapshots) {
+                        if (snap.getValue().toString().equals("individuals")) {
+                            Iterable<DataSnapshot> snapshots2 = snap.getChildren();
+                            for (DataSnapshot s: snapshots2) {
+                                Individual individual = snap.getValue(Individual.class);
+                                String dbEmail = individual.getEmail();
+                                String dbPassword = individual.getPassword();
+
+                                if (dbEmail.equals(email) && dbPassword.equals(password)) {
+                                    foundUser = true;
+                                    break;
+                                }
+                            }
+                        } else if (snap.getValue().toString().equals("shelters")) {
+                            Iterable<DataSnapshot> snapshots2 = snap.getChildren();
+                            for (DataSnapshot s: snapshots2) {
+                                Shelter shelter = s.getValue(Shelter.class);
+                                String dbEmail = shelter.getEmail();
+                                String dbPassword = shelter.getPassword();
+
+                                if (dbEmail.equals(email) && dbPassword.equals(password)) {
+                                    foundUser = true;
+                                    break;
+                                }
+                            }
                         }
                     }
                 } else {
                     Toast.makeText(LoginActivity.this, "Please Enter Your Email and Password", Toast.LENGTH_SHORT).show();
-
                 }
 
                 if (foundUser) {
@@ -83,5 +102,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
             }
         });
+
+
     }
 }
