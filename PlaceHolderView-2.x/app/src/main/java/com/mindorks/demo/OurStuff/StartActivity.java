@@ -29,12 +29,14 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View view) {
         switch(view.getId()) {
-            case R.id.loginButton:
 
+            case R.id.loginButton:
+                Intent loginIntent = new Intent(StartActivity.this, LoginActivity.class);
+                this.startActivity(loginIntent);
                 break;
             case R.id.signupButton:
-                Intent intent = new Intent(StartActivity.this, SignUpActivity.class);
-                StartActivity.this.startActivity(intent);
+                Intent signupIntent = new Intent(StartActivity.this, SignUpActivity.class);
+                startActivity(signupIntent);
                 break;
         }
     }

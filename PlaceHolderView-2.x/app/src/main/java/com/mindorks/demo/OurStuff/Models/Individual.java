@@ -11,14 +11,23 @@ public class Individual {
     private HousingType housing;
     private int kids;
     private int pets;
+    private String password;
 
-    public Individual(String name, String address, String email, HousingType housing, int kids, int pets) {
+    private String type;
+    private String kidStr;
+    private String petStr;
+
+    public Individual() {
+    }
+
+    public Individual(String name, String email, String address, HousingType housing, int kids, int pets, String password) {
         this.name = name;
         this.address = address;
         this.email = email;
         this.housing = housing;
         this.kids = kids;
         this.pets = pets;
+        this.password = password;
     }
 
     public String getName() {
@@ -69,6 +78,14 @@ public class Individual {
         this.pets = pets;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -81,7 +98,12 @@ public class Individual {
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
         if (address != null ? !address.equals(that.address) : that.address != null) return false;
         if (email != null ? !email.equals(that.email) : that.email != null) return false;
-        return housing == that.housing;
+        if (housing != that.housing) return false;
+        if (password != null ? !password.equals(that.password) : that.password != null)
+            return false;
+        if (type != null ? !type.equals(that.type) : that.type != null) return false;
+        if (kidStr != null ? !kidStr.equals(that.kidStr) : that.kidStr != null) return false;
+        return petStr != null ? petStr.equals(that.petStr) : that.petStr == null;
     }
 
     @Override
@@ -92,8 +114,10 @@ public class Individual {
         result = 31 * result + (housing != null ? housing.hashCode() : 0);
         result = 31 * result + kids;
         result = 31 * result + pets;
+        result = 31 * result + (password != null ? password.hashCode() : 0);
+        result = 31 * result + (type != null ? type.hashCode() : 0);
+        result = 31 * result + (kidStr != null ? kidStr.hashCode() : 0);
+        result = 31 * result + (petStr != null ? petStr.hashCode() : 0);
         return result;
     }
-
-
 }
