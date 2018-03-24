@@ -54,6 +54,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 boolean foundUser = false;
+                boolean foundShelter = false;
 
                 if (!email.equals("") && !password.equals("")) {
                     Iterable<DataSnapshot> snapshots = dataSnapshot.getChildren();
@@ -81,7 +82,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                 String dbPassword = shelter.getPassword();
 
                                 if (dbEmail.equals(email) && dbPassword.equals(password)) {
-                                    foundUser = true;
+                                    foundShelter = true;
                                     break;
                                 }
                             }
@@ -94,7 +95,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 if (foundUser) {
                     Intent intent = new Intent(LoginActivity.this, ActivityTinder.class);
                     startActivity(intent);
-                } else {
+                } else if(foundShelter) {
+                    Intent intent = new Intent(LoginActivity.this, ManageShelter.class);
+                    startActivity(intent);
+                }
+
+                else {
                     Toast.makeText(LoginActivity.this, "Incorrect Email or Password", Toast.LENGTH_SHORT).show();
                 }
             }

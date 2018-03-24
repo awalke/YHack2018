@@ -90,7 +90,7 @@ public class ShelterCreateProfile extends AppCompatActivity implements View.OnCl
 
             database.child("shelters").child("user-" + shelter.hashCode()).setValue(shelter);
 
-            Intent intent = new Intent(ShelterCreateProfile.this, ActivityTinder.class);
+            Intent intent = new Intent(ShelterCreateProfile.this, ManageShelter.class);
             startActivity(intent);
         }
 
