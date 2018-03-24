@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.mindorks.demo.OurStuff.SignUpActivity">
+
+    <Button
+        android:id="@+id/shelterButton"
+        android:layout_width="412dp"
+        android:layout_height="335dp"
+        android:background="#1c9fbd"
+        android:textColor="@color/white"
+        android:textSize="50dp"
+        android:text="Shelter" />
+
+    <Button
+        android:id="@+id/individualButton"
+        android:layout_width="412dp"
+        android:layout_height="330dp"
+        android:layout_marginTop="330dp"
+        android:background="#105f70"
+        android:textColor="@color/white"
+        android:textSize="50dp"
+        android:text="Individual" />
+
+</FrameLayout>

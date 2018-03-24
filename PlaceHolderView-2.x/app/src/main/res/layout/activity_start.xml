@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.mindorks.demo.OurStuff.StartActivity">
+
+    <Button
+        android:id="@+id/loginButton"
+        android:layout_width="412dp"
+        android:layout_height="335dp"
+        android:background="#88e85e"
+        android:textColor="@color/white"
+        android:textSize="50dp"
+        android:text="Log In"/>
+
+    <Button
+        android:id="@+id/signupButton"
+        android:layout_width="412dp"
+        android:layout_height="330dp"
+        android:layout_marginTop="330dp"
+        android:background="#22c4e8"
+        android:textColor="@color/white"
+        android:textSize="50dp"
+        android:text="Sign Up" />
+</FrameLayout>
