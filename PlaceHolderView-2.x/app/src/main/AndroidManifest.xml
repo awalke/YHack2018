@@ -18,10 +18,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".OurStuff.SignUpActivity" />
-        <activity android:name=".OurStuff.IndividualCreateProfile"></activity>
-        <activity android:name=".OurStuff.ShelterCreateProfile"></activity>
-        <activity android:name=".ActivityTinder"></activity>
-        <activity android:name=".OurStuff.LoginActivity"></activity>
+        <activity android:name=".OurStuff.IndividualCreateProfile" />
+        <activity android:name=".OurStuff.ShelterCreateProfile" />
+        <activity android:name=".ActivityTinder" />
+        <activity android:name=".OurStuff.LoginActivity" />
+        <activity android:name=".OurStuff.ManageShelter" />
+        <activity android:name=".OurStuff.ManageDogProfile"></activity>
     </application>
 
 </manifest>
