@@ -88,7 +88,9 @@ public class ShelterCreateProfile extends AppCompatActivity implements View.OnCl
             Shelter shelter = new Shelter(name.getText().toString(), email.getText().toString(),
                     password.getText().toString(), phone.getText().toString(), address.getText().toString(), type );
 
-            database.child("shelters").child("user-" + shelter.hashCode()).setValue(shelter);
+            int hashcode = shelter.hashCode();
+            shelter.setId(hashcode);
+            database.child("shelters").child("user-" + hashcode).setValue(shelter);
 
             Intent intent = new Intent(ShelterCreateProfile.this, ManageShelter.class);
             startActivity(intent);

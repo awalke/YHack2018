@@ -1,5 +1,9 @@
 package com.mindorks.demo.OurStuff.Models;
 
+import android.net.Uri;
+
+import java.util.List;
+
 /**
  * Created by twalke on 3/24/18.
  */
@@ -15,11 +19,15 @@ public class DogProfile {
     private ActivityLevel howActive;
     private boolean housetrained;
     private String description;
+    private List<String> photo;
+    private int id;
 
     public DogProfile() {
     }
 
-    public DogProfile(String name, String breed, Integer age, boolean kidFriendly, boolean dogFriendly, boolean catFriendly, ActivityLevel howActive, boolean housetrained, String description) {
+    public DogProfile(String name, String breed, Integer age, boolean kidFriendly, boolean dogFriendly,
+                      boolean catFriendly, ActivityLevel howActive, boolean housetrained, String description,
+                      List<String> photo) {
         this.name = name;
         this.breed = breed;
         this.age = age;
@@ -29,6 +37,8 @@ public class DogProfile {
         this.howActive = howActive;
         this.housetrained = housetrained;
         this.description = description;
+        this.photo = photo;
+        this.id = id;
     }
 
     public String getName() {
@@ -101,6 +111,22 @@ public class DogProfile {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public List<String> getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(List<String> photo) {
+        this.photo = photo;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Override

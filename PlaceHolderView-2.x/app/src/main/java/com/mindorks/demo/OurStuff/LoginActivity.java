@@ -78,6 +78,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             Iterable<DataSnapshot> snapshots2 = snap.getChildren();
                             for (DataSnapshot s: snapshots2) {
                                 Shelter shelter = s.getValue(Shelter.class);
+                                Shelter.instance = shelter;
                                 String dbEmail = shelter.getEmail();
                                 String dbPassword = shelter.getPassword();
 

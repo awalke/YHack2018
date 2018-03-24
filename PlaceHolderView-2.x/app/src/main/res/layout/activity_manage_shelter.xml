@@ -14,13 +14,30 @@
         android:layout_marginRight="10dp">
 
         <TextView
-            android:id="@+id/textView6"
+            android:id="@+id/shelterName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="ShelterNameHere"
             android:textAlignment="center"
-            android:textSize="30dp" />
+            android:textSize="45dp"
+            android:layout_marginTop="20dp"/>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/dogList">
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Dogs"
+                android:textSize="40dp"
+                android:layout_marginTop="30dp"
+                android:textAlignment="center"
+                android:layout_marginBottom="20dp"/>
+        </LinearLayout>
 
 
         <Button
@@ -29,19 +46,8 @@
         android:layout_height="wrap_content"
         android:text="Add New Dog"
         android:background="#1c9fbd"
-        android:textColor="@color/white"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/textView9"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Dogs" />
-        </LinearLayout>
+        android:textColor="@color/white"
+        android:layout_marginTop="20dp" />
 
     </LinearLayout>
 </FrameLayout>

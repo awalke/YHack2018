@@ -3,6 +3,7 @@
     package="com.mindorks.demo">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -23,7 +24,8 @@
         <activity android:name=".ActivityTinder" />
         <activity android:name=".OurStuff.LoginActivity" />
         <activity android:name=".OurStuff.ManageShelter" />
-        <activity android:name=".OurStuff.ManageDogProfile"></activity>
+        <activity android:name=".OurStuff.ManageDogProfile" />
+        <activity android:name=".OurStuff.EditDogProfile"></activity>
     </application>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
 </manifest>

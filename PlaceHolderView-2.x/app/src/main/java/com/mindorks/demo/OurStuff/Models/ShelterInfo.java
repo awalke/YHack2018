@@ -1,5 +1,6 @@
 package com.mindorks.demo.OurStuff.Models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -8,12 +9,16 @@ import java.util.List;
 
 public class ShelterInfo {
     private List<DogProfile> dogs;
+    public static ShelterInfo instance = null;
 
     public ShelterInfo(List<DogProfile> dogs) {
         this.dogs = dogs;
     }
 
     public ShelterInfo() {
+        if (instance == null) {
+            instance = new ShelterInfo(new ArrayList<DogProfile>());
+        }
     }
 
     public List<DogProfile> getDogs() {
@@ -22,6 +27,10 @@ public class ShelterInfo {
 
     public void setDogs(List<DogProfile> dogs) {
         this.dogs = dogs;
+    }
+
+    public void addDog(DogProfile dog) {
+        dogs.add(dog);
     }
 
 

@@ -1,5 +1,6 @@
 package com.mindorks.demo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +10,7 @@ import android.view.Gravity;
 import com.mindorks.butterknifelite.ButterKnifeLite;
 import com.mindorks.butterknifelite.annotations.BindView;
 import com.mindorks.butterknifelite.annotations.OnClick;
+import com.mindorks.demo.OurStuff.ManageDogProfile;
 import com.mindorks.demo.swipe.TinderCard;
 import com.mindorks.placeholderview.SwipeDecor;
 import com.mindorks.placeholderview.SwipePlaceHolderView;
@@ -39,22 +41,15 @@ public class ActivityTinder extends AppCompatActivity {
             public void onItemRemoved(int count) {
                 Log.d(TAG, "onItemRemoved: " + count);
                 if(count == 0){
-                    mSwipView.addView(new TinderCard())
-                            .addView(new TinderCard())
-                            .addView(new TinderCard())
-                            .addView(new TinderCard())
-                            .addView(new TinderCard())
-                            .addView(new TinderCard())
-                            .addView(new TinderCard())
-                            .addView(new TinderCard())
-                            .addView(new TinderCard())
-                            .addView(new TinderCard());
+                    mSwipView.addView(new TinderCard(0, ActivityTinder.this))
+                            .addView(new TinderCard(1, ActivityTinder.this))
+                            .addView(new TinderCard(2, ActivityTinder.this));
                 }
             }
         });
         mSwipView.getBuilder()
 //                .setSwipeType(SwipePlaceHolderView.SWIPE_TYPE_VERTICAL)
-                .setDisplayViewCount(2)
+                .setDisplayViewCount(1)
                 .setIsUndoEnabled(true)
                 .setWidthSwipeDistFactor(4)
                 .setHeightSwipeDistFactor(6)
@@ -68,32 +63,13 @@ public class ActivityTinder extends AppCompatActivity {
                         .setSwipeInMsgLayoutId(R.layout.tinder_swipe_in_msg_view)
                         .setSwipeOutMsgLayoutId(R.layout.tinder_swipe_out_msg_view));
 
-        mSwipView.addView(new TinderCard())
-                .addView(new TinderCard())
-                .addView(new TinderCard())
-                .addView(new TinderCard())
-                .addView(new TinderCard())
-                .addView(new TinderCard())
-                .addView(new TinderCard())
-                .addView(new TinderCard())
-                .addView(new TinderCard())
-                .addView(new TinderCard());
+        mSwipView.addView(new TinderCard(0, ActivityTinder.this))
+                .addView(new TinderCard(1, ActivityTinder.this))
+                .addView(new TinderCard(2, ActivityTinder.this));
         new Thread(new Runnable(){
             @Override
             public void run() {
-                try {
-                    Thread.sleep(8000);
-                    mSwipView.enableTouchSwipe();
-//                    mSwipView.lockViews();
-//                    Thread.currentThread().sleep(4000);
-//                    mSwipView.unlockViews();
-//                    Thread.currentThread().sleep(4000);
-//                    mSwipView.lockViews();
-//                    Thread.currentThread().sleep(4000);
-//                    mSwipView.unlockViews();
-                }catch (InterruptedException e){
-                    e.printStackTrace();
-                }
+                mSwipView.enableTouchSwipe();
             }
         }).start();
     }
@@ -111,5 +87,9 @@ public class ActivityTinder extends AppCompatActivity {
     @OnClick(R.id.undoBtn)
     private void onUndoClick(){
         mSwipView.undoLastSwipe();
+    }
+
+    public static void onSwipeRight() {
+        System.out.println("Right Swipe");
     }
 }

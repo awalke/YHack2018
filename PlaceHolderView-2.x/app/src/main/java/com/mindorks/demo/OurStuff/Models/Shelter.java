@@ -11,6 +11,8 @@ public class Shelter {
     private String phone;
     private String address;
     private OrganizationType organization;
+    public static Shelter instance = null;
+    int id;
 
     public Shelter() {
     }
@@ -70,6 +72,14 @@ public class Shelter {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Override
