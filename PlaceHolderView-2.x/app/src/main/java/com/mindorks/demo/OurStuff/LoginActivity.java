@@ -59,10 +59,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     Iterable<DataSnapshot> snapshots = dataSnapshot.getChildren();
 
                     for (DataSnapshot snap : snapshots) {
-                        if (snap.getValue().toString().equals("individuals")) {
+                        String category = snap.getKey().toString();
+
+                        if (category.equals("individuals")) {
                             Iterable<DataSnapshot> snapshots2 = snap.getChildren();
                             for (DataSnapshot s: snapshots2) {
-                                Individual individual = snap.getValue(Individual.class);
+                                Individual individual = s.getValue(Individual.class);
                                 String dbEmail = individual.getEmail();
                                 String dbPassword = individual.getPassword();
 
@@ -71,7 +73,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                     break;
                                 }
                             }
-                        } else if (snap.getValue().toString().equals("shelters")) {
+                        } else if (category.equals("shelters")) {
                             Iterable<DataSnapshot> snapshots2 = snap.getChildren();
                             for (DataSnapshot s: snapshots2) {
                                 Shelter shelter = s.getValue(Shelter.class);
