@@ -41,6 +41,7 @@ public class ShelterCreateProfile extends AppCompatActivity implements View.OnCl
     public void onClick(View view) {
         EditText name = findViewById(R.id.name);
         EditText email = findViewById(R.id.email);
+        EditText password = findViewById(R.id.password);
         EditText phone = findViewById(R.id.phone);
         EditText address = findViewById(R.id.address);
         RadioGroup organization = findViewById(R.id.organization);
@@ -52,6 +53,10 @@ public class ShelterCreateProfile extends AppCompatActivity implements View.OnCl
         }
         else if (email.getText().equals(null) || email.getText().length() < 1) {
             Toast.makeText(ShelterCreateProfile.this, "Please Enter Organization Email", Toast.LENGTH_SHORT).show();
+            enabled = false;
+        }
+        else if (password.getText().equals(null) || password.getText().length() < 1) {
+            Toast.makeText(ShelterCreateProfile.this, "Please Enter Password", Toast.LENGTH_SHORT).show();
             enabled = false;
         }
         else if (phone.getText().equals(null) || phone.getText().length() < 1) {
@@ -81,7 +86,7 @@ public class ShelterCreateProfile extends AppCompatActivity implements View.OnCl
         if (enabled) {
 
             Shelter shelter = new Shelter(name.getText().toString(), email.getText().toString(),
-                    phone.getText().toString(), address.getText().toString(), type );
+                    password.getText().toString(), phone.getText().toString(), address.getText().toString(), type );
 
             database.child("shelters").child("user-" + shelter.hashCode()).setValue(shelter);
 
