@@ -35,6 +35,8 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                 break;
             case R.id.shelterButton:
                 //do shelter sign up
+                Intent i = new Intent(SignUpActivity.this, ShelterCreateProfile.class);
+                startActivity(i);
                 break;
         }
     }
